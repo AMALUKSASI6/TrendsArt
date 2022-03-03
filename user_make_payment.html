@@ -1,0 +1,43 @@
+{% include 'user_header.html' %}
+<br><div class="wrapper bgded overlay" style="background-image:url('/static/images/111 (8).jpg');">
+  <div id="pageintro" class="hoc clear"> 
+
+<center>
+		<form method="post"><br>
+			<br>
+<h1><u>payment</u></h1><br>
+<table class="table" style="width: 100px" >
+					{% if data['pay'] %}
+					<th>card no</th>
+					<td><input type="text"  name="cdno" required></td>
+				</tr>
+
+				<tr>
+					<th>cvv</th>
+					<td><input type="text" name="cvv" required></td>
+				</tr>
+				<tr>
+					<th>Expiry Date</th>
+					<td><input type="date" name="ed" required></td>
+				</tr>
+				<tr>
+					<th>Amount</th>
+					<td><input type="text" value="{{data['pay'][0]['price']}}" readonly="" name="amt"></td>
+				</tr>
+
+				<tr> <td align="center" colspan="2"><input type="submit" name="pay" value="pay">
+				</td>
+			</tr>
+			{% endif %}
+
+</table>
+</form>
+</center>
+</div>
+</div>
+<br>
+<br><br><br>
+</center>
+
+
+{% include 'footer.html' %}

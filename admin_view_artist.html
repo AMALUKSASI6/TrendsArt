@@ -1,0 +1,40 @@
+{% include 'admin_header.html' %}
+<div class="wrapper bgded overlay" style="background-image:url('/static/images/111 (8).jpg');">
+  <div id="pageintro" class="hoc clear"> 
+<center>
+<h1>artist</h1>
+	<table border="2">
+		<tr>
+			<th>Firstname</th>
+			<th>Lastname</th>
+			<th>Phone</th>
+			<th>Email</th>
+			<th>verify</th>
+		</tr>
+		{% for row in data['art'] %}
+		<tr>
+			<td>{{ row['first_name'] }}</td>
+			<td>{{ row['last_name'] }}</td>
+			<td>{{ row['phone'] }}</td>
+			<td>{{ row['email'] }}</td>
+			<td>{{ row['user_type'] }}</td>
+			{% if row['user_type']=='pending'%}
+			<td><a href="?action=accept&login_id={{ row['login_id']}}">Accept</a></td>
+			<td><a href="?action=reject&login_id={{ row['login_id']}}">Reject</a></td>
+			{% endif %}
+
+			{% if row['user_type']=='reject'%}
+			<td><a href="?action=accept&login_id={{ row['login_id']}}">Accept</a></td>
+			{% endif %}
+
+			{% if row['user_type']=='artist'%}
+			<td><a href="?action=reject&login_id={{ row['login_id']}}">Reject</a></td>
+			{% endif %}
+
+		</tr>
+		{% endfor %}
+	</table>
+</center>
+</div>
+</div>
+{% include 'footer.html' %}

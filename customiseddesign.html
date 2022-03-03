@@ -1,0 +1,79 @@
+{% include 'user_header.html' %}
+<div class="wrapper bgded overlay" style="background-image:url('/static/images/111 (8).jpg');">
+  <div id="pageintro" class="hoc clear"> 
+
+<center>
+		<form method="post" enctype="multipart/form-data">
+			
+<h1><u>customized booking</u></h1><br>
+<table class="table" style="width: 50px" >
+					<tr>
+						<th>artist</th>
+						<td>
+						<select name="a_id" style="width: 500px">
+							{% for row in data['artist'] %}
+						<option value="{{row['artist_id']}}">{{row['first_name']}}
+						</option>
+							{% endfor %}
+						</select>
+						</td>
+					</tr>
+				
+				<tr>
+					<th>Image</th>
+					<td><input type="file" name="img"></td>
+				</tr>
+	
+				<tr>
+					<th>design</th>
+					<td><input type="text"  name="design" required></td>
+				</tr>
+
+				<tr>
+					<th>description</th>
+					<td><input type="text" name="description" required></td>
+				</tr>
+
+				<tr> <td align="center" colspan="2"><input type="submit" name="booking" value="booking">
+				</td>
+			</tr>
+
+</table></form>
+
+<table>
+	<center>
+		<h1><u>customised designs</u></h1>
+	<table border="2">
+		<tr>
+			
+			<th>design</th>
+			<th>description</th>
+			<th>date</th>
+			<th>status</th>
+			<th>sample work</th>
+			<th>amount</th>
+		</tr>
+		{% for row in data['art'] %}
+		<tr>
+			
+			<td>{{row['design']}}</td>
+			<td>{{row['description']}}</td>
+			<td>{{row['date']}}</td>
+			<td>{{row['status']}}</td>
+			
+			<td><a href="/{{row['sample_work']}}"><img src="/{{row['sample_work']}}" style="height: 60px;width: 60px"></a></td><td>{{row['amt']}}</td>	
+
+			{% if row['status']=="accept" %}
+             
+            <td style="size: 2px" align="right"><a href="custom_payment?action=buy&aid={{row['artist_id']}}&art={{row['art_id']}}&amt={{row['amt']}}&cdesign_id={{ row['cdesign_id'] }}">payment</a></td>		
+			{% endif %}
+				
+
+		</tr>
+
+		{% endfor %}
+	</table>
+</center>
+</div>
+</div>
+{% include 'footer.html' %}

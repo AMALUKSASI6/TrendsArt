@@ -1,0 +1,28 @@
+{% include 'artist_header.html' %}
+<div class="wrapper bgded overlay" style="background-image:url('/static/images/amm.jpg');">
+  <div id="pageintro" class="hoc clear"> 
+<center>
+<h1>orders</h1>
+	<table border="2" style="width: 300px">
+		<tr>
+			
+			<th>ART</th>
+			
+			
+		</tr>
+		{% for row in data['art'] %}
+		<tr>
+			
+			<td colspan="2"><img src="/{{row['image_path']}}" style="width: 300px;height: 300px"></td>
+			
+		</tr>
+		{% endfor %}
+
+
+				
+			</tr>
+	</table>
+</center>
+</div>
+</div>
+{% include 'footer.html' %}

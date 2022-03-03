@@ -1,0 +1,61 @@
+{% include 'admin_header.html'%}
+<div class="wrapper bgded overlay" style="background-image:url('/static/images/111 (8).jpg');">
+  <div id="pageintro" class="hoc clear"> 
+<center>
+
+<form method="post">
+	{% if data['cate'] %}
+	<h1>UPDATE CATEGORY</h1>
+				<table  class="table" style="width: 100px">
+
+			    <tr>
+					<th>category</th>
+					<td><input type="text"  name="category" value="{{data['cate'][0]['categoryname']}}" ></td>
+				</tr>
+
+				<tr> 
+					<td align="center" colspan="2"><input type="submit" name="update" value="UPDATE">
+                    </td>
+                </tr>
+						
+		</table>
+		{% else %}
+
+
+
+		<h1>CATEGORY</h1>
+		<table  class="table" style="width: 100px">
+			    <tr>
+					<th>category</th>
+					<td><input type="text"  name="category"></td>
+				</tr>
+
+				<tr> 
+					<td align="center" colspan="2"><input type="submit" name="submit" value="add">
+                    </td>
+                </tr>
+						
+		</table>
+		{% endif %}
+		
+	</form>
+<h1>categories</h1>
+		<table border="2">
+			<tr>
+			<th>category</th>
+			
+			</tr>
+			{% for row in data['category']%}
+			  <tr>
+				<td>{{ row['categoryname'] }}</td>
+				<td><a href="?action=delete&cid={{row['category_id']}}">DELETE</a></td>
+				<td><a href="?action=update&cid={{row['category_id']}}">UPDATE</a></td>
+				
+			  </tr>
+			{% endfor %}
+		</table>
+</center>
+</div>
+</div>
+
+{% include 'footer.html' %}

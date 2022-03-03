@@ -1,0 +1,88 @@
+{% include 'artist_header.html' %}
+<div class="wrapper bgded overlay" style="background-image:url('/static/images/amm.jpg');">
+  <div id="pageintro" class="hoc clear"> 
+<center>
+		<form method="post" enctype="multipart/form-data">
+			<h1><u> art gallery</u></h1>
+			  <table class="table" style="width: 100px">
+				
+
+				<tr>
+					<th>work name</th>
+					<td><input type="text"  name="workname"></td>
+				</tr>
+				
+
+				<tr>
+					<th>work description</th>
+					<td><input type="text" name="description"></td>
+				</tr>
+				<tr>
+					<th>Category</th>
+					<td>
+						<select name="cat">
+							{% for row in data['cat'] %}
+							<option value="{{row['category_id']}}">{{row['categoryname']}}</option>
+
+                
+							{% endfor %}
+							
+						</select>
+							
+					</td>
+				</tr>
+
+				<tr>
+					<th>Image</th>
+					<td><input type="file" name="img"></td>
+				</tr>
+
+				<tr>
+					<th>price</th>
+					<td><input type="text" name="price"></td>
+				</tr>
+
+				<tr> <td align="center" colspan="2"><input type="submit" name="submit" value="upload">
+
+				</td></tr>
+			</table>
+		</form>
+
+		<h1>View Art upload</h1>
+		<table>
+			<tr>
+			<th>workname</th>
+			<th>workdescription</th>
+			<th>image path</th>
+			<th>work date</th>
+			<th>price</th>
+			<th>work status</th>
+			<th>category</th>
+			</tr>
+			{% for row in data['art']%}
+			  <tr>
+				<td>{{ row['work_name'] }}</td>
+				<td>{{ row['work_description'] }}</td>
+				<td><a href="/{{row['image_path']}}"><img src="/{{row['image_path']}}" style="width: 200px;height: 200px"></td>
+				<td>{{ row['work_date'] }}</td>
+				<td>{{ row['price'] }}</td>
+				<td>{{ row['work_status'] }}</td>
+				<td>{{ row['categoryname'] }}</td>
+<!-- 				<td><a href="?action=delete&art_id={{row['art_id']}}">DELETE</a></td>
+ -->
+
+ 
+
+ <!-- 
+				{% if row['work_status']=="selled"%}
+				<td><a href="art_upload">AVAILABLE</a></td>
+				{%endif%}
+ -->
+
+			  </tr>
+			{% endfor %}
+		</table>
+	</center>
+	</div></div>
+	
+{% include 'footer.html' %}

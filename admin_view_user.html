@@ -1,0 +1,29 @@
+{% include 'admin_header.html' %}
+<div class="wrapper bgded overlay" style="background-image:url('/static/images/111 (8).jpg');">
+  <div id="pageintro" class="hoc clear"> 
+<center>
+<h1>user</h1>
+	<table border="2">
+		<tr>
+			<th>Firstname</th>
+			<th>Lastname</th>
+			<th>Adress</th>
+			<th>pincode</th>
+			<th>Phone</th>
+			<th>Email</th>
+		</tr>
+		{% for row in data['art'] %}
+		<tr>
+			<td>{{ row['firstname'] }}</td>
+			<td>{{ row['lastname'] }}</td>
+			<td>{{ row['latitude'] }}</td>
+			<td>{{ row['longitude'] }}</td>
+			<td>{{ row['phone'] }}</td>
+			<td>{{ row['email'] }}</td>
+		</tr>	
+		{% endfor %}
+	</table>
+</center>
+</div>
+</div>
+{%include 'footer.html' %}

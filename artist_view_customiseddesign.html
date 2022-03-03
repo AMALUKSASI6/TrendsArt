@@ -1,0 +1,50 @@
+{% include 'artist_header.html' %}
+<div class="wrapper bgded overlay" style="background-image:url('/static/images/amm.jpg');">
+  <div id="pageintro" class="hoc clear"> 
+<center>
+<h1>VIEW CUSTOMIZED WORK</h1>
+	<table border="2">
+		<tr>
+			<th>Name</th>
+			<th>Address</th>
+			<th>pincode</th>
+			<th>Phone</th>
+			<th>Email</th>
+			<th>design</th>
+			<th>description</th>
+			<th>date</th>
+			<th>status</th>
+			<th>sample work</th>
+			<th>amt</th>
+		</tr>
+		{% for row in data['art'] %}
+		<tr>
+			<td>{{row['firstname']+" "+row['lastname']}}</td>
+			<td>{{row['latitude']}}</td>
+			<td>{{row['longitude']}}</td>
+			<td>{{row['phone']}}</td>
+			<td>{{row['email']}}</td>
+			<td>{{row['design']}}</td>
+			<td>{{row['description']}}</td>
+			<td>{{row['date']}}</td>
+
+			<td>{{row['status']}}</td>
+			<td><a href="/{{row['sample_work']}}"><img src="/{{row['sample_work']}}" style="height: 60px;width: 60px"></td>
+			{% if row['status']=='pending' %}
+			<td><a href="?action=accept&did={{row['cdesign_id']}}">Accept</a></td>
+			<td><a href="?action=reject&did={{row['cdesign_id']}}">Reject</a></td>
+		
+			{% elif row['status']=='accept' and row['amt']=='pending' %}
+			 <td><a href="artist_custom_payment?cid={{row['cdesign_id']}}">add amount</a></td>
+			 {% else %}
+			 <td>{{row['amt']}}</td>
+			 {% endif %}
+			
+		</tr>
+
+		{% endfor %}
+	</table>
+</center>
+</div>
+</div>
+{% include 'footer.html' %}

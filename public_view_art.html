@@ -1,0 +1,95 @@
+{% include 'public_header.html' %}
+<br>
+<div class="wrapper bgded overlay" style="background-image:url('/static/images/s.jpg');">
+  <div id="pageintro" class="hoc clear"> 
+
+<center>
+<form method="post">
+<table align="right" style="width: 100px" >
+	<th>search</th>
+						<td>
+						<select name="cat">
+							{% for row in data['cat'] %}
+							<option value="{{row['category_id']}}">{{row['categoryname']}}</option>
+							{% endfor %}
+						</select>
+						</td>
+						<td><input type="submit" name="search"></td>
+</table>
+</form>
+<br>
+<br>
+
+{% if data['search'] %}	
+<br>
+
+<h1>View Arts</h1>
+{% for row in data['search'] %}
+		<table border="2" style="width: 300px">
+			 <tr>
+			  	
+				
+				<td colspan="2"><img src="/{{row['image_path']}}" style="width: 300px;height: 300px"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">{{ row['work_name'] }}
+					  ONLY-{{ row['price'] }}RS.
+				</td>
+				
+			</tr>
+			<tr>
+				<td colspan="2" align="center">ARTIST-{{row['first_name']}} {{row['last_name']}}</td>
+			</tr>
+<!-- 			<tr>
+				<td style="size: 2px" align="left">
+					<a href="action=add_to_cart?&aid={{row['artist_id']}}&art={{row['art_id']}}"">add to cart</a>		
+				</td>
+				<td style="size: 2px" align="right"><a href="user_make_payment?action=buy&aid={{row['artist_id']}}&art={{row['art_id']}}">BUY</a></td>		
+				
+			</tr> -->
+
+		</table>
+			<br>			
+			
+			{% endfor %}
+
+{% else %}
+<br>
+<h1>View Arts</h1>
+		
+		
+		{% for row in data['art'] %}
+		<table border="2" style="width: 300px">
+			 <tr>
+			  	
+				
+				<td colspan="2"><img src="/{{row['image_path']}}" style="width: 300px;height: 300px"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">{{ row['work_name'] }}
+					  ONLY-{{ row['price'] }}RS.
+				</td>
+				
+			</tr>
+			<tr>
+				<td colspan="2" align="center">ARTIST-{{row['first_name']}} {{row['last_name']}}</td>
+			</tr>
+			<!-- <tr>
+				<td style="size: 2px" align="left">
+					<a href="?action=add_to_cart&aid={{row['artist_id']}}&art={{row['art_id']}}&amt={{row['price']}}">add to cart</a>	
+				</td>
+				<td style="size: 2px" align="right"><a href="user_make_payment?action=buy&aid={{row['artist_id']}}&art={{row['art_id']}}">BUY</a></td>		
+				
+			</tr> -->
+
+		</table>
+			<br>			
+			
+			{% endfor %}
+			
+		
+{% endif %}
+
+</center>
+</div></div>
+{% include 'footer.html' %}

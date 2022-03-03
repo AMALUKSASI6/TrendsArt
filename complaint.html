@@ -1,0 +1,46 @@
+
+{% include 'user_header.html' %}
+<div class="wrapper bgded overlay" style="background-image:url('/static/images/111 (8).jpg');">
+  <div id="pageintro" class="hoc clear"> 
+
+<center>
+	<form method="post">
+		<h1>complaint</h1>
+		<table class="table" style="width: 100px">
+			    <tr>
+					<th>complaint</th>
+					<td><input type="text"  name="complaint" required></td>
+				</tr>
+
+				<tr> 
+					<td align="center" colspan="2"><input type="submit" name="submit" value="submit">
+                    </td>
+                </tr>
+				
+
+				
+		</table>
+		
+	</form>
+
+<h1>replay</h1>
+
+<table border="2">
+	<tr>
+		<th>complaint description</th>
+		<th>replay description</th>
+		<th>complaint date</th>
+	</tr>
+ 	{% for row in data['replay'] %}
+	<tr>
+		<td>{{row['complaint_description']}}</td>
+		<td>{{row['reply_description']}}</td>
+		<td>{{row['complaint_date']}}</td>
+	</tr> 
+	 {% endfor %} 
+
+</table>
+</center>
+</div>
+</div>
+{% include'footer.html' %}

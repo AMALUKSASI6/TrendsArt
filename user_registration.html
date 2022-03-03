@@ -1,0 +1,59 @@
+{% include 'public_header.html' %}
+
+<div class="wrapper bgded overlay" style="background-image:url('/static/images/111 (10).jpg');">
+  <div id="pageintro" class="hoc clear"> 
+<center>
+
+
+
+		<form method="post">
+			<h1 style="margin-top: -5em"><br><u>User Registration</u></h1>
+			<table class="table" style="width: 400px;height: 300px">
+				<tr>
+					<th>First Name</th>
+					<td><input type="text"  name="fname" required pattern="[A-Za-z ]+$"></td>
+				</tr>
+				<tr>
+					<th>Last Name</th>
+					<td><input type="text" name="lname" required pattern="[A-Za-z ]+$"></td>
+				</tr>
+
+				<tr>
+					<th>adress</th>
+					<td><input type="text" name="latitude" required pattern="[A-Za-z ]+$"></td>
+				</tr>
+				<tr>
+					<th>pincode</th>
+					<td><input type="text" name="longitude" ></td>
+				</tr>
+
+
+				<tr>
+					<th>phone</th>
+					<td><input type="text" name="phone" required pattern="[7-9]{2}[0-9]{8}"></td>
+				</tr>
+				<tr>
+					<th>Email</th>
+					<td><input type="email" name="email" required></td>
+				</tr>
+
+				
+					<th>username</th>
+					<td><input type="text" name="username" required minlength="5"></td>
+				</tr>
+
+				<tr>
+					<th>password</th>
+					<td><input type="password" name="password" required minlength="4"></td>
+				</tr>
+
+				<tr> <td align="center" colspan="2"><input type="submit" name="register" value="REGISTER" class="btn primary">
+
+</table>
+</form>
+
+
+ </center>
+ </div>
+</div>
+{% include 'footer.html' %}

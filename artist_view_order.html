@@ -1,0 +1,38 @@
+{% include 'artist_header.html' %}
+<div class="wrapper bgded overlay" style="background-image:url('/static/images/amm.jpg');">
+  <div id="pageintro" class="hoc clear"> 
+<center>
+<h1>orders</h1>
+	<table border="2">
+		<tr>
+			<th>Name</th>
+			<th>Address</th>
+			<th>pincode</th>
+			<th>phone</th>
+			<th>email</th>
+			<th>order date</th>
+			<th>amount</th>
+			<th>status</th>
+		</tr>
+		{% for row in data['order'] %}
+		<tr>
+			<td>{{row['firstname']+" "+row['lastname']}}</td>
+			<td>{{row['latitude']}}</td>
+			<td>{{row['longitude']}}</td>
+			<td>{{row['phone']}}</td>
+			<td>{{row['email']}}</td>
+			<td>{{row['order_date']}}</td>
+			<td>{{row['amount']}}</td>
+			<td>{{row['order_status']}}</td>
+			<td><a href="artist_view_art?oid={{row['order_id']}}&aid={{row['art_id']}}">view art</a></td>
+			<!-- {% if row['status']=='pending' %}
+			<td><a href="?action=accept&did={{row['cdesign_id']}}">Accept</a></td>
+			<td><a href="?action=reject&did={{row['cdesign_id']}}">Reject</a></td>
+			{% endif %} -->
+		</tr>
+		{% endfor %}
+	</table>
+</center>
+</div>
+</div>
+{% include 'footer.html' %}

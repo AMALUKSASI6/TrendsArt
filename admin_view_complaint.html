@@ -1,0 +1,34 @@
+{% include 'admin_header.html' %}
+<div class="wrapper bgded overlay" style="background-image:url('/static/images/111 (8).jpg');">
+  <div id="pageintro" class="hoc clear"> 
+<center>
+<h1>complaint view</h1>
+		<table border="2">
+			<tr>
+				<th>Name</th>
+				<th>phone</th>
+				<th>email</th>
+				<th>reply description</th>
+				<th>complaint description</th>
+				<th>complaint date</th>
+			</tr>
+
+		{% for row in data['complaint'] %}
+		<tr>
+			  	<td>{{row['firstname']+" "+row['lastname']}}</td>
+			  	<td>{{row['phone']}}</td>
+			  	<td>{{row['email']}}</td>
+			  	<td>{{row['complaint_description']}}</td>
+			  	{% if row['reply_description']=='pending' %}
+			  	<td><a href="replay?cid={{row['complaint_id']}}">send reply</a></td>
+			  	{% else %}
+			  	<td>{{row['reply_description']}}</td>
+			  	{% endif %}
+			  	<td>{{row['complaint_date']}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+</center>
+</div>
+</div>
+{% include 'footer.html'%}

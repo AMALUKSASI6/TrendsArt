@@ -1,0 +1,40 @@
+{% include 'user_header.html' %}
+<br>
+<div class="wrapper bgded overlay" style="background-image:url('/static/images/s.jpg');">
+  <div id="pageintro" class="hoc clear"> 
+
+<center>
+<h1>VIEW MY CART</h1>
+		
+		
+		{% for row in data['cart'] %}
+		<table border="2" style="width: 300px">
+			 <tr>
+			  	
+				
+				<td colspan="2"><img src="/{{row['image_path']}}" style="width: 300px;height: 300px"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">{{ row['work_name'] }}
+					  ONLY-{{ row['price'] }}RS.
+				</td>
+				
+			</tr>
+			
+			<tr>
+				
+				<td style="size: 2px" align="right"><a href="user_make_payment?action=buy&aid={{row['artist_id']}}&art={{row['art_id']}}">BUY</a></td>		
+				
+			</tr>
+
+		</table>
+			<br>			
+			
+			{% endfor %}
+			
+		
+
+
+</center>
+</div></div>
+{% include 'footer.html' %}
